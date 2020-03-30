@@ -22,7 +22,7 @@
 #include "GlobalInits.h" 
 #include "GuiTool.h"
 #include "Martone.h"
-int yty;
+
 //======================
 //Declare Class Objects
 //======================
