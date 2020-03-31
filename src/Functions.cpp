@@ -71,3 +71,29 @@ void ShowStructure(const stringParameters * ptr)
 {
   Serial.println(ptr->stringVolume);
 }
+/***************************************************************************************************
+   DESCRIPTION: -Uses pointer to show structure member values.
+
+   ARGUMENTS:   -
+
+   RETURNS:     -
+
+   NOTES:
+ ****************************************************************************************************/
+void MyNoteOn(byte channel, byte note, byte velocity)
+{
+
+}
+/***************************************************************************************************
+   DESCRIPTION: -Uses pointer to show structure member values.
+
+   ARGUMENTS:   -
+
+   RETURNS:     -
+
+   NOTES:
+ ****************************************************************************************************/
+void MyNoteOff(byte channel, byte note, byte velocity)
+{
+  
+}

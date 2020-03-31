@@ -18,6 +18,7 @@
 //=============
 #include <Arduino.h>
 #include <Audio.h>
+#include <USBHost_t36.h>                     //necessary to plug USB midi controller into Teensy   
 #include "Functions.h"
 #include "GlobalInits.h" 
 #include "GuiTool.h"
@@ -27,6 +28,10 @@
 //Declare Class Objects
 //======================
 string1 balls; 
+USBHost myusb;                               //to set up USB midi
+USBHub hub1(myusb);
+USBHub hub2(myusb);
+MIDIDevice midi1(myusb);
 
 //================
 //Setup. Run once
@@ -35,6 +40,17 @@ void setup()
 {
   delay(5000);
   Serial.begin(115200);
+  AudioMemory(40);
+  sgtl5000_1.enable();
+  sgtl5000_1.volume(1.0);
+  myusb.begin();
+  midi1.setHandleNoteOn(MyNoteOn);
+  midi1.setHandleNoteOff(MyNoteOff);
+
+
+
+
+
   int blah = Funky(fish);
   Serial.println(fish);
   Serial.println(blah); 
@@ -55,6 +71,7 @@ void setup()
   Serial.println(NUM);
   Serial.println(NUM2);
   marStr[0].ShowString();
+  Serial.println("Start-Up Complete!");
 
 }
 
@@ -63,5 +80,7 @@ void setup()
 //=======================
 void loop() 
 {
+  myusb.Task();                                //Reads serial data on USB line and
+  midi1.read();                                //Sets midi callback functions below when triggered.
    
 }
